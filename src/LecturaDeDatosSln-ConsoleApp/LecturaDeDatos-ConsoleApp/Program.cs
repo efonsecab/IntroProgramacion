@@ -10,6 +10,7 @@ namespace LecturaDeDatos_ConsoleApp
     {
         static void Main(string[] args)
         {
+            //Console.BackgroundColor = ConsoleColor.Red;
             //Leer Datos: Nombre, Primer Apellido, Segundo Apellido, Edad
             Console.WriteLine("Digite su nombre");
             string nombre = Console.ReadLine();
