@@ -48,13 +48,16 @@ namespace Condiciones_ConsoleApp
                     case '/':
                         if (iOperandoDerecho != 0)
                         {
-                            var resultadoDivison = iOperandoIzquierdo / iOperandoDerecho;
+                            var resultadoDivison = (float)iOperandoIzquierdo / iOperandoDerecho;
                             Console.WriteLine(string.Format("El resultado de dividir {0} entre {1} es: {2}", iOperandoIzquierdo, iOperandoDerecho, resultadoDivison));
                         }
                         else
                         {
                             Console.WriteLine("Error!. No se puede dividir entre 0");
                         }
+                        break;
+                    default:
+                        Console.WriteLine("Operación incorrecta");
                         break;
                 }
             }
