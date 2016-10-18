@@ -11,14 +11,53 @@ namespace IntroRPG.Shared
         Jugador,
         Enemigo
     }
+
+    public enum GameSessionStatus
+    {
+        Started,
+        Battle,
+        PlayerWin,
+        GameOver
+    }
     public class GameController
     {
+        public GameSessionStatus CurrentGameplayStatus
+        {
+            get; private set;
+        }
         private Player Player { get; set; }
         private List<Enemy> Enemies = new List<Enemy>();
         public Turno TurnoActual { get; set; }
         private List<Ataque> Ataques = new List<Ataque>();
 
         private Enemy TargetActual { get; set; }
+        private int InitialPlayerHealthpoints { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="initialPlayerHealthPoints">initialPlayerHealthPoints must be higher than 100</param>
+        /// <param name="totalEnemies"></param>
+        public GameController(int initialPlayerHealthPoints, int totalEnemies)
+        {
+            this.InitialPlayerHealthpoints = initialPlayerHealthPoints;
+            Stats playerStats = new Stats();
+            playerStats.HealthPoints = initialPlayerHealthPoints;
+            this.Player = new Player(playerStats);
+            Random rnd = new Random();
+            for (int iPos = 0; iPos < totalEnemies; iPos++)
+            {
+                //el segundo parámetro es exclusivo
+                int enemyHealthPoints = rnd.Next(100, initialPlayerHealthPoints + 1);
+                Stats newEnemyStats = new Stats();
+                newEnemyStats.HealthPoints = enemyHealthPoints;
+                Enemy objNewEnemy = new Enemy(newEnemyStats);
+                objNewEnemy.SetRandomElement();
+                this.Enemies.Add(objNewEnemy);
+            }
+            CrearAtaques();
+            this.CurrentGameplayStatus = GameSessionStatus.Started;
+        }
 
         public object GetPlayerHP()
         {
@@ -35,27 +74,9 @@ namespace IntroRPG.Shared
             return this.TargetActual.EnemyStats.HealthPoints;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="initialPlayerHealthPoints">initialPlayerHealthPoints must be higher than 100</param>
-        /// <param name="totalEnemies"></param>
-        public GameController(int initialPlayerHealthPoints, int totalEnemies)
+
+        private void CrearAtaques()
         {
-            Stats playerStats = new Stats();
-            playerStats.HealthPoints = initialPlayerHealthPoints;
-            this.Player = new Player(playerStats);
-            Random rnd = new Random();
-            for (int iPos = 0; iPos < totalEnemies; iPos++)
-            {
-                //el segundo parámetro es exclusivo
-                int enemyHealthPoints = rnd.Next(100, initialPlayerHealthPoints + 1);
-                Stats newEnemyStats = new Stats();
-                newEnemyStats.HealthPoints = enemyHealthPoints;
-                Enemy objNewEnemy = new Enemy(newEnemyStats);
-                objNewEnemy.SetRandomElement();
-                this.Enemies.Add(objNewEnemy);
-            }
             Ataque objRayo = new Ataque(TipoElemento.Rayo,
                 new TipoElemento[] { TipoElemento.Agua },
                 new TipoElemento[] { TipoElemento.Tierra },
@@ -94,14 +115,6 @@ namespace IntroRPG.Shared
             Ataques.Add(objViento);
         }
 
-        public Ataque AtacarEnemigo(TipoElemento tipoDeElemento, out int damage)
-        {
-            Ataque objAtaque = ObtenerAtaque(tipodeAtaque: tipoDeElemento);
-            damage = CalcularDmg(objAtaque);
-            this.TargetActual.EnemyStats.HealthPoints -= damage;
-            return objAtaque;
-        }
-
         private int CalcularDmg(Ataque objAtaque)
         {
             int damage = objAtaque.BaseDamage;
@@ -124,6 +137,31 @@ namespace IntroRPG.Shared
             return damage;
         }
 
+        public Ataque AtacarEnemigo(TipoElemento tipoDeElemento, out int damage, out bool nuevoEnemigo)
+        {
+            nuevoEnemigo = false;
+            Ataque objAtaque = ObtenerAtaque(tipodeAtaque: tipoDeElemento);
+            damage = CalcularDmg(objAtaque);
+            this.TargetActual.EnemyStats.HealthPoints -= damage;
+            if (this.TargetActual.EnemyStats.HealthPoints <= 0)
+            {
+                this.TargetActual.EnemyStats.HealthPoints = 0;
+                this.Enemies.Remove(this.TargetActual);
+                if (this.Enemies.Count > 0)
+                {
+                    SetRandomTarget();
+                    nuevoEnemigo = true;
+                    this.Player.PlayerStats.HealthPoints = this.InitialPlayerHealthpoints;
+                }
+                else
+                {
+                    this.CurrentGameplayStatus = GameSessionStatus.PlayerWin;
+                }
+
+            }
+            return objAtaque;
+        }
+
         public Ataque AtacarJugador(out int damage)
         {
             Array values = Enum.GetValues(typeof(TipoElemento));
@@ -133,13 +171,18 @@ namespace IntroRPG.Shared
             Ataque objAtaque = ObtenerAtaque(elemento);
             damage = CalcularDmg(objAtaque);
             this.Player.PlayerStats.HealthPoints -= damage;
+            if (this.Player.PlayerStats.HealthPoints <= 0)
+            {
+                this.Player.PlayerStats.HealthPoints = 0;
+                this.CurrentGameplayStatus = GameSessionStatus.GameOver;
+            }
             return objAtaque;
         }
 
         private Ataque ObtenerAtaque(TipoElemento tipodeAtaque)
         {
             Ataque objAtaque = null;
-            for(int iPos=0; iPos < this.Ataques.Count; iPos++)
+            for (int iPos = 0; iPos < this.Ataques.Count; iPos++)
             {
                 if (this.Ataques[iPos].Tipo == tipodeAtaque)
                 {
@@ -152,8 +195,13 @@ namespace IntroRPG.Shared
 
         public void StartGame()
         {
-            Random rnd = new Random();
             this.TurnoActual = Turno.Jugador;
+            SetRandomTarget();
+        }
+
+        private void SetRandomTarget()
+        {
+            Random rnd = new Random();
             this.TargetActual = this.Enemies[rnd.Next(0, this.Enemies.Count)];
         }
     }

@@ -37,36 +37,37 @@ namespace IntroRPG.ConsoleDemo
                         bool ataqueRealizado = false;
                         Ataque objAtaqueJugador = null;
                         int damagePorJugador = 0;
+                        bool nuevoEnemigo = false;
                         switch (ataque.Key)
                         {
                             case ConsoleKey.D1:
                             case ConsoleKey.NumPad1:
-                                objAtaqueJugador=objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Rayo, out damagePorJugador);
+                                objAtaqueJugador=objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Rayo, out damagePorJugador, out nuevoEnemigo);
                                 ataqueRealizado = true;
                                 break;
                             case ConsoleKey.D2:
                             case ConsoleKey.NumPad2:
-                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Fuego, out damagePorJugador);
+                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Fuego, out damagePorJugador, out nuevoEnemigo);
                                 ataqueRealizado = true;
                                 break;
                             case ConsoleKey.D3:
                             case ConsoleKey.NumPad3:
-                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Tierra, out damagePorJugador);
+                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Tierra, out damagePorJugador, out nuevoEnemigo);
                                 ataqueRealizado = true;
                                 break;
                             case ConsoleKey.D4:
                             case ConsoleKey.NumPad4:
-                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Hielo, out damagePorJugador);
+                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Hielo, out damagePorJugador, out nuevoEnemigo);
                                 ataqueRealizado = true;
                                 break;
                             case ConsoleKey.D5:
                             case ConsoleKey.NumPad5:
-                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Agua, out damagePorJugador);
+                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Agua, out damagePorJugador, out nuevoEnemigo);
                                 ataqueRealizado = true;
                                 break;
                             case ConsoleKey.D6:
                             case ConsoleKey.NumPad6:
-                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Viento, out damagePorJugador);
+                                objAtaqueJugador = objGC.AtacarEnemigo(IntroRPG.Shared.TipoElemento.Viento, out damagePorJugador, out nuevoEnemigo);
                                 ataqueRealizado = true;
                                 break;
                             default:
@@ -78,6 +79,8 @@ namespace IntroRPG.ConsoleDemo
                             objGC.TurnoActual = Shared.Turno.Enemigo;
                             Console.WriteLine(string.Format("Ha atacado con {0}. Su enemigo pierde {1}HP", objAtaqueJugador.Tipo.ToString(), damagePorJugador));
                         }
+                        if (nuevoEnemigo)
+                            Console.WriteLine("Ha encontrado un nuevo enemigo");
                         break;
                     case Shared.Turno.Enemigo:
                         int dmg = 0;
@@ -86,7 +89,20 @@ namespace IntroRPG.ConsoleDemo
                         objGC.TurnoActual = Turno.Jugador;
                         break;
                 }
+                switch (objGC.CurrentGameplayStatus)
+                {
+                    case GameSessionStatus.PlayerWin:
+                        Console.WriteLine("Felicidades! Ha ganado el juego");
+                        bSalir = true;
+                        break;
+                    case GameSessionStatus.GameOver:
+                        Console.WriteLine("Lo sentimos. Ha sufrido una derrota");
+                        bSalir = true;
+                        break;
+                }
             } while (bSalir == false);
+            Console.WriteLine("Presione una tecla para salir");
+            Console.ReadKey();
         }
     }
 }
