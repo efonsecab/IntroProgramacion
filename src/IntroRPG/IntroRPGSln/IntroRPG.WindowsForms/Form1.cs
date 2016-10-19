@@ -61,7 +61,7 @@ namespace IntroRPG.WindowsForms
             Ataque objAtaque = null;
             int damage = 0;
             bool nuevoEnemigo = false;
-            Nullable<TipoElemento> tipoDeElemento = null;
+            //Nullable<TipoElemento> tipoDeElemento = null;
             if (btnSender == this.btnRayo)
                 objAtaque = objGC.AtacarEnemigo(TipoElemento.Rayo, out damage, out nuevoEnemigo);
             if (btnSender == this.btnFuego)
@@ -82,6 +82,7 @@ namespace IntroRPG.WindowsForms
             ValidarGameplayStatus();
             objGC.TurnoActual = Turno.Enemigo;
             SetTurnoActualUI();
+            SetJugadorUI();
             this.btnAtaqueEnemigo.Enabled = true;
             ValidarGameplayStatus();
         }
