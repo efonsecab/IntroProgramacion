@@ -33,6 +33,11 @@ namespace IntroRPG.Shared
         private Enemy TargetActual { get; set; }
         private int InitialPlayerHealthpoints { get; set; }
 
+        public int GetCantidadEnemigos()
+        {
+            return this.Enemies.Count;
+        }
+
         /// <summary>
         /// 
         /// </summary>

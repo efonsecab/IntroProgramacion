@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroRPG.Shared", "IntroRPG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroRPG.ConsoleDemo", "IntroRPG.ConsoleDemo\IntroRPG.ConsoleDemo.csproj", "{88CBC347-7D6E-4FFD-AE1C-AFA3F6E120AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroRPG.WindowsForms", "IntroRPG.WindowsForms\IntroRPG.WindowsForms.csproj", "{A7F2C5AE-8F38-4348-A7E1-964B45EA2478}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{88CBC347-7D6E-4FFD-AE1C-AFA3F6E120AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88CBC347-7D6E-4FFD-AE1C-AFA3F6E120AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88CBC347-7D6E-4FFD-AE1C-AFA3F6E120AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F2C5AE-8F38-4348-A7E1-964B45EA2478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F2C5AE-8F38-4348-A7E1-964B45EA2478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F2C5AE-8F38-4348-A7E1-964B45EA2478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F2C5AE-8F38-4348-A7E1-964B45EA2478}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
