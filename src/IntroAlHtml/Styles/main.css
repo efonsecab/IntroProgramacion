@@ -1,0 +1,23 @@
+.MainHeader {
+    font-family: 'Comic Sans MS';
+    font-style: italic;
+    color: orange;
+}
+
+.MainSubHeader {
+    font-family: Verdana;
+    color: forestgreen;
+}
+
+.MainSubHeader2 {
+    font-family: Verdana;
+    color: red;
+}
+form
+{
+    color:blue;
+}
+.SameLine
+{
+    display:inline-block;
+}
