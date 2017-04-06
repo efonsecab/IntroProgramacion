@@ -1,0 +1,37 @@
+﻿@model IntroduccionAMSCognitiveServices.Models.UserPhotos
+@{
+    ViewBag.Title = "ListMyPhotos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListMyPhotos</h2>
+@if (Model != null && Model.PhotosInfo.Count > 0)
+{
+    <div class="container">
+        @foreach (var singlePhoto in Model.PhotosInfo)
+        {
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="@singlePhoto.PhotoLink" target="_blank">
+                        <img src="@singlePhoto.PhotoLink" width="250" height="250" />
+                    </a>
+                </div>              
+                <div class="col-sm-3">
+                    Name: @singlePhoto.Name
+                    Id: @singlePhoto.Id
+                </div>
+                <div class="col-sm-4">
+                    Created Time: @singlePhoto.CreatedTime
+                </div>
+                <div class="col-sm-3">
+                    @Html.ActionLink(linkText: "Analyze Image", actionName: "AnalyzeImage", controllerName: "CognitiveServices",
+                   routeValues: new { imageId = singlePhoto.Id }, htmlAttributes: null)
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <label class="has-error">No hay fotos</label>
+}

@@ -1,0 +1,51 @@
+﻿@model IntroduccionAMSCognitiveServices.Models.APIs.ComputerVision.CompputerVisionInfo
+@{
+    ViewBag.Title = "AnalyzeImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AnalyzeImage</h2>
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="@Model.ImageUrl" width="250" height="250" />
+        </div>
+        <div class="col-sm-3">
+            Categories:
+            <ul>
+                @foreach (var singleCategory in Model.categories)
+                {
+                    <li>@singleCategory.name - @singleCategory.score</li>
+                }
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            Tags:
+            <ul>
+                @foreach (var singleTag in Model.tags)
+                {
+                    <li>
+                        @singleTag.name - @singleTag.confidence
+                    </li>
+                }
+            </ul>
+            @if (Model.description != null)
+            {
+                <div class="col-sm-3">
+                    Description Captions:
+                    <ul>
+                        @foreach (var singleDescCaption in Model.description.captions)
+                    {
+                            <li>
+                                @singleDescCaption.text - @singleDescCaption.confidence
+                            </li>
+                        }
+                    </ul>
+                    Description Tags: @string.Join(",", @Model.description.tags)
+
+                </div>
+            }
+        </div>
+    </div>
+}
