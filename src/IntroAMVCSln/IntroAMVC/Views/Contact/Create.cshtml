@@ -1,0 +1,41 @@
+﻿@model IntroAMVC.Models.ContactInfo
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+@Model.Name
+<div class="container">
+    @using (Html.BeginForm(actionName: "Create", controllerName: "Contact", method: FormMethod.Post, htmlAttributes: null))
+    {
+        <div class="row">
+            <div class="col">
+                @Html.LabelFor(m => Model.Name)
+                @Html.TextBoxFor(m => Model.Name)
+                @Html.ValidationMessageFor(m => Model.Name)
+            </div>
+            <div class="col">
+                @Html.LabelFor(m => Model.LastName)
+                @Html.TextBoxFor(m => Model.LastName)
+                @Html.ValidationMessageFor(m => Model.LastName)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="col">
+                    @Html.LabelFor(m => Model.Email)
+                    @Html.TextBoxFor(m => Model.Email)
+                    @Html.ValidationMessageFor(m => Model.Email)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Create Contact" />
+        </div>
+    }
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

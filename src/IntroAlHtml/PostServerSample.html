@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script type="text/javascript" src="Scripts/PostServerSample.js"></script>
+</head>
+<body>
+    Nombre:
+    <label name="lblNombre0"></label>
+    Fecha de Nacimiento:
+    <label name="lblFechaNacimiento0"></label>
+
+    Nombre:
+    <label name="lblNombre1"></label>
+    Fecha de Nacimiento:
+    <label name="lblFechaNacimiento1"></label>
+    <script type="text/javascript">
+        function LoadValues()
+        {
+            var nombre = getParameterByName("txtNombre0");
+            var fechaNacimiento = getParameterByName("dtFechaNacimiento0");
+            var lblNombre = document.getElementsByName("lblNombre0")[0];
+            var lblFechaNacimiento = document.getElementsByName("lblFechaNacimiento0")[0];
+            ReadSentValues(nombre, fechaNacimiento, lblNombre, lblFechaNacimiento);
+            nombre = getParameterByName("txtNombre1");
+            fechaNacimiento = getParameterByName("dtFechaNacimiento1");
+            lblNombre = document.getElementsByName("lblNombre1")[0];
+            lblFechaNacimiento = document.getElementsByName("lblFechaNacimiento1")[0];
+            ReadSentValues(nombre, fechaNacimiento, lblNombre, lblFechaNacimiento);
+        }
+
+        LoadValues();
+    </script>
+</body>
+</html>
