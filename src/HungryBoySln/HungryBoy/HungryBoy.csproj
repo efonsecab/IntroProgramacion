@@ -321,6 +321,7 @@
     <Content Include="Images\rosekane_97.png" />
     <Content Include="Images\rosekane_98.png" />
     <Content Include="Images\rosekane_99.png" />
+    <Content Include="Mapas\Level1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

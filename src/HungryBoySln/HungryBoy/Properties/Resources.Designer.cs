@@ -71,6 +71,32 @@ namespace HungryBoy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WWWWWWWWWWWWWWWWWWWWWWWWWWWW
+        ///WO     WWWWWWWWWWWWWWWWWWWWW
+        ///W WWWW WWWWWWWWWWWWWWWWWWWWW
+        ///W W    WWWWWWWWWWWWWWWWWWWWW
+        ///W W    WWWWWWWWWWWWWWWWWWWWW
+        ///W W    WWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
+        ///W  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Level1 {
+            get {
+                return ResourceManager.GetString("Level1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap RedBrick {
@@ -86,6 +112,26 @@ namespace HungryBoy.Properties {
         internal static System.Drawing.Bitmap RedBrickTile {
             get {
                 object obj = ResourceManager.GetObject("RedBrickTile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rosekane_12 {
+            get {
+                object obj = ResourceManager.GetObject("rosekane_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rosekane_13 {
+            get {
+                object obj = ResourceManager.GetObject("rosekane_13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

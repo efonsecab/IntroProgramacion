@@ -24,18 +24,15 @@ namespace HungryBoy
         {
             InitializeComponent();
             CreateMaze();
-            CreatePlayer();
         }
 
-        private void CreatePlayer()
+        private void CreatePlayer(int f, int c)
         {
-            int posX = (int)Math.Floor((decimal)TOTAL_ROWS / 2);
-            int posY = (int)Math.Floor((decimal)TOTAL_COLUMNS / 2);
             player = new PictureBox();
             player.Image = Properties.Resources.HungryBoy;
             player.Size =
                 new Size(W, H);
-            Point imageLocation = maze[posX, posY].Location;
+            Point imageLocation = maze[f, c].Location;
             player.Location = imageLocation;
             player.SizeMode = PictureBoxSizeMode.StretchImage;
             this.Controls.Add(player);
@@ -46,19 +43,18 @@ namespace HungryBoy
         {
             int posX = 0;
             int posY = 0;
+            int posAtString = 0;
+            string cleanLevelMap = 
+                Properties.Resources.Level1.
+                Replace("\r\n",string.Empty);
             for (int f = 0; f < TOTAL_ROWS; f++)
             {
                 for (int c = 0; c < TOTAL_COLUMNS; c++)
                 {
+                    char charAtPos = cleanLevelMap[posAtString];
                     PictureBox p = new PictureBox();
                     p.Margin =
                         new Padding(0, 0, 0, 0);
-                    if (c == 0 || f == 0 ||
-                        c == (TOTAL_COLUMNS - 1) ||
-                        f == (TOTAL_ROWS - 1))
-                    {
-                        p.Image = Properties.Resources.RedBrickTile;
-                    }
                     //p.Margin =
                     //    new Padding(0,0,0,0);
                     p.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -68,6 +64,28 @@ namespace HungryBoy
                     posX += W;
                     this.Controls.Add(p);
                     maze[f, c] = p;
+                    switch (charAtPos)
+                    {
+                        case 'P':
+                            CreatePlayer(f, c);
+                            break;
+                        case 'o':
+                            p.Image = Properties.Resources.rosekane_12;
+                            break;
+                        case 'O':
+                            p.Image = Properties.Resources.rosekane_13;
+                            break;
+                        case 'I': break;
+                        case 'B': break;
+                        case 'Z': break;
+                        case 'W':
+                            p.Image = Properties.Resources.RedBrickTile;
+                            break;
+                        default:
+                            bool a = false;
+                            break;
+                    }
+                    posAtString += 1;
                 }
                 posY += H;
                 posX = 0;
