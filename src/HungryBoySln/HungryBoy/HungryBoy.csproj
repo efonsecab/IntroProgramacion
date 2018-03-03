@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{370B44D9-6F3C-47F4-8419-39CF49F81C66}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HungryBoy</RootNamespace>
+    <AssemblyName>HungryBoy</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Images\Thumbs.db" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\rosekane_0.png" />
+    <Content Include="Images\rosekane_1.png" />
+    <Content Include="Images\rosekane_10.png" />
+    <Content Include="Images\rosekane_100.png" />
+    <Content Include="Images\rosekane_101.png" />
+    <Content Include="Images\rosekane_102.png" />
+    <Content Include="Images\rosekane_103.png" />
+    <Content Include="Images\rosekane_104.png" />
+    <Content Include="Images\rosekane_105.png" />
+    <Content Include="Images\rosekane_106.png" />
+    <Content Include="Images\rosekane_107.png" />
+    <Content Include="Images\rosekane_108.png" />
+    <Content Include="Images\rosekane_109.png" />
+    <Content Include="Images\rosekane_11.png" />
+    <Content Include="Images\rosekane_110.png" />
+    <Content Include="Images\rosekane_111.png" />
+    <Content Include="Images\rosekane_112.png" />
+    <Content Include="Images\rosekane_113.png" />
+    <Content Include="Images\rosekane_114.png" />
+    <Content Include="Images\rosekane_115.png" />
+    <Content Include="Images\rosekane_116.png" />
+    <Content Include="Images\rosekane_117.png" />
+    <Content Include="Images\rosekane_118.png" />
+    <Content Include="Images\rosekane_119.png" />
+    <Content Include="Images\rosekane_12.png" />
+    <Content Include="Images\rosekane_120.png" />
+    <Content Include="Images\rosekane_121.png" />
+    <Content Include="Images\rosekane_122.png" />
+    <Content Include="Images\rosekane_123.png" />
+    <Content Include="Images\rosekane_124.png" />
+    <Content Include="Images\rosekane_125.png" />
+    <Content Include="Images\rosekane_126.png" />
+    <Content Include="Images\rosekane_127.png" />
+    <Content Include="Images\rosekane_128.png" />
+    <Content Include="Images\rosekane_129.png" />
+    <Content Include="Images\rosekane_13.png" />
+    <Content Include="Images\rosekane_130.png" />
+    <Content Include="Images\rosekane_131.png" />
+    <Content Include="Images\rosekane_132.png" />
+    <Content Include="Images\rosekane_133.png" />
+    <Content Include="Images\rosekane_134.png" />
+    <Content Include="Images\rosekane_135.png" />
+    <Content Include="Images\rosekane_136.png" />
+    <Content Include="Images\rosekane_137.png" />
+    <Content Include="Images\rosekane_138.png" />
+    <Content Include="Images\rosekane_139.png" />
+    <Content Include="Images\rosekane_14.png" />
+    <Content Include="Images\rosekane_140.png" />
+    <Content Include="Images\rosekane_141.png" />
+    <Content Include="Images\rosekane_142.png" />
+    <Content Include="Images\rosekane_143.png" />
+    <Content Include="Images\rosekane_144.png" />
+    <Content Include="Images\rosekane_145.png" />
+    <Content Include="Images\rosekane_146.png" />
+    <Content Include="Images\rosekane_147.png" />
+    <Content Include="Images\rosekane_148.png" />
+    <Content Include="Images\rosekane_149.png" />
+    <Content Include="Images\rosekane_15.png" />
+    <Content Include="Images\rosekane_150.png" />
+    <Content Include="Images\rosekane_151.png" />
+    <Content Include="Images\rosekane_152.png" />
+    <Content Include="Images\rosekane_153.png" />
+    <Content Include="Images\rosekane_154.png" />
+    <Content Include="Images\rosekane_155.png" />
+    <Content Include="Images\rosekane_156.png" />
+    <Content Include="Images\rosekane_157.png" />
+    <Content Include="Images\rosekane_158.png" />
+    <Content Include="Images\rosekane_159.png" />
+    <Content Include="Images\rosekane_16.png" />
+    <Content Include="Images\rosekane_160.png" />
+    <Content Include="Images\rosekane_161.png" />
+    <Content Include="Images\rosekane_162.png" />
+    <Content Include="Images\rosekane_163.png" />
+    <Content Include="Images\rosekane_164.png" />
+    <Content Include="Images\rosekane_165.png" />
+    <Content Include="Images\rosekane_166.png" />
+    <Content Include="Images\rosekane_167.png" />
+    <Content Include="Images\rosekane_168.png" />
+    <Content Include="Images\rosekane_169.png" />
+    <Content Include="Images\rosekane_17.png" />
+    <Content Include="Images\rosekane_170.png" />
+    <Content Include="Images\rosekane_171.png" />
+    <Content Include="Images\rosekane_172.png" />
+    <Content Include="Images\rosekane_173.png" />
+    <Content Include="Images\rosekane_174.png" />
+    <Content Include="Images\rosekane_175.png" />
+    <Content Include="Images\rosekane_176.png" />
+    <Content Include="Images\rosekane_177.png" />
+    <Content Include="Images\rosekane_178.png" />
+    <Content Include="Images\rosekane_179.png" />
+    <Content Include="Images\rosekane_18.png" />
+    <Content Include="Images\rosekane_180.png" />
+    <Content Include="Images\rosekane_181.png" />
+    <Content Include="Images\rosekane_182.png" />
+    <Content Include="Images\rosekane_183.png" />
+    <Content Include="Images\rosekane_184.png" />
+    <Content Include="Images\rosekane_185.png" />
+    <Content Include="Images\rosekane_186.png" />
+    <Content Include="Images\rosekane_187.png" />
+    <Content Include="Images\rosekane_188.png" />
+    <Content Include="Images\rosekane_189.png" />
+    <Content Include="Images\rosekane_19.png" />
+    <Content Include="Images\rosekane_190.png" />
+    <Content Include="Images\rosekane_191.png" />
+    <Content Include="Images\rosekane_192.png" />
+    <Content Include="Images\rosekane_193.png" />
+    <Content Include="Images\rosekane_194.png" />
+    <Content Include="Images\rosekane_195.png" />
+    <Content Include="Images\rosekane_196.png" />
+    <Content Include="Images\rosekane_197.png" />
+    <Content Include="Images\rosekane_198.png" />
+    <Content Include="Images\rosekane_199.png" />
+    <Content Include="Images\rosekane_2.png" />
+    <Content Include="Images\rosekane_20.png" />
+    <Content Include="Images\rosekane_200.png" />
+    <Content Include="Images\rosekane_201.png" />
+    <Content Include="Images\rosekane_202.png" />
+    <Content Include="Images\rosekane_203.png" />
+    <Content Include="Images\rosekane_204.png" />
+    <Content Include="Images\rosekane_205.png" />
+    <Content Include="Images\rosekane_206.png" />
+    <Content Include="Images\rosekane_207.png" />
+    <Content Include="Images\rosekane_208.png" />
+    <Content Include="Images\rosekane_209.png" />
+    <Content Include="Images\rosekane_21.png" />
+    <Content Include="Images\rosekane_210.png" />
+    <Content Include="Images\rosekane_211.png" />
+    <Content Include="Images\rosekane_212.png" />
+    <Content Include="Images\rosekane_213.png" />
+    <Content Include="Images\rosekane_214.png" />
+    <Content Include="Images\rosekane_215.png" />
+    <Content Include="Images\rosekane_216.png" />
+    <Content Include="Images\rosekane_217.png" />
+    <Content Include="Images\rosekane_218.png" />
+    <Content Include="Images\rosekane_219.png" />
+    <Content Include="Images\rosekane_22.png" />
+    <Content Include="Images\rosekane_220.png" />
+    <Content Include="Images\rosekane_221.png" />
+    <Content Include="Images\rosekane_222.png" />
+    <Content Include="Images\rosekane_223.png" />
+    <Content Include="Images\rosekane_224.png" />
+    <Content Include="Images\rosekane_225.png" />
+    <Content Include="Images\rosekane_226.png" />
+    <Content Include="Images\rosekane_227.png" />
+    <Content Include="Images\rosekane_228.png" />
+    <Content Include="Images\rosekane_229.png" />
+    <Content Include="Images\rosekane_23.png" />
+    <Content Include="Images\rosekane_230.png" />
+    <Content Include="Images\rosekane_231.png" />
+    <Content Include="Images\rosekane_232.png" />
+    <Content Include="Images\rosekane_233.png" />
+    <Content Include="Images\rosekane_234.png" />
+    <Content Include="Images\rosekane_235.png" />
+    <Content Include="Images\rosekane_236.png" />
+    <Content Include="Images\rosekane_237.png" />
+    <Content Include="Images\rosekane_24.png" />
+    <Content Include="Images\rosekane_25.png" />
+    <Content Include="Images\rosekane_26.png" />
+    <Content Include="Images\rosekane_27.png" />
+    <Content Include="Images\rosekane_28.png" />
+    <Content Include="Images\rosekane_29.png" />
+    <Content Include="Images\rosekane_3.png" />
+    <Content Include="Images\rosekane_30.png" />
+    <Content Include="Images\rosekane_31.png" />
+    <Content Include="Images\rosekane_32.png" />
+    <Content Include="Images\rosekane_33.png" />
+    <Content Include="Images\rosekane_34.png" />
+    <Content Include="Images\rosekane_35.png" />
+    <Content Include="Images\rosekane_36.png" />
+    <Content Include="Images\rosekane_37.png" />
+    <Content Include="Images\rosekane_38.png" />
+    <Content Include="Images\rosekane_39.png" />
+    <Content Include="Images\rosekane_4.png" />
+    <Content Include="Images\rosekane_40.png" />
+    <Content Include="Images\rosekane_41.png" />
+    <Content Include="Images\rosekane_42.png" />
+    <Content Include="Images\rosekane_43.png" />
+    <Content Include="Images\rosekane_44.png" />
+    <Content Include="Images\rosekane_45.png" />
+    <Content Include="Images\rosekane_46.png" />
+    <Content Include="Images\rosekane_47.png" />
+    <Content Include="Images\rosekane_48.png" />
+    <Content Include="Images\rosekane_49.png" />
+    <Content Include="Images\rosekane_5.png" />
+    <Content Include="Images\rosekane_50.png" />
+    <Content Include="Images\rosekane_51.png" />
+    <Content Include="Images\rosekane_52.png" />
+    <Content Include="Images\rosekane_53.png" />
+    <Content Include="Images\rosekane_54.png" />
+    <Content Include="Images\rosekane_55.png" />
+    <Content Include="Images\rosekane_56.png" />
+    <Content Include="Images\rosekane_57.png" />
+    <Content Include="Images\rosekane_58.png" />
+    <Content Include="Images\rosekane_59.png" />
+    <Content Include="Images\rosekane_6.png" />
+    <Content Include="Images\rosekane_60.png" />
+    <Content Include="Images\rosekane_61.png" />
+    <Content Include="Images\rosekane_62.png" />
+    <Content Include="Images\rosekane_63.png" />
+    <Content Include="Images\rosekane_64.png" />
+    <Content Include="Images\rosekane_65.png" />
+    <Content Include="Images\rosekane_66.png" />
+    <Content Include="Images\rosekane_67.png" />
+    <Content Include="Images\rosekane_68.png" />
+    <Content Include="Images\rosekane_69.png" />
+    <Content Include="Images\rosekane_7.png" />
+    <Content Include="Images\rosekane_70.png" />
+    <Content Include="Images\rosekane_71.png" />
+    <Content Include="Images\rosekane_72.png" />
+    <Content Include="Images\rosekane_73.png" />
+    <Content Include="Images\rosekane_74.png" />
+    <Content Include="Images\rosekane_75.png" />
+    <Content Include="Images\rosekane_76.png" />
+    <Content Include="Images\rosekane_77.png" />
+    <Content Include="Images\rosekane_78.png" />
+    <Content Include="Images\rosekane_79.png" />
+    <Content Include="Images\rosekane_8.png" />
+    <Content Include="Images\rosekane_80.png" />
+    <Content Include="Images\rosekane_81.png" />
+    <Content Include="Images\rosekane_82.png" />
+    <Content Include="Images\rosekane_83.png" />
+    <Content Include="Images\rosekane_84.png" />
+    <Content Include="Images\rosekane_85.png" />
+    <Content Include="Images\rosekane_86.png" />
+    <Content Include="Images\rosekane_87.png" />
+    <Content Include="Images\rosekane_88.png" />
+    <Content Include="Images\rosekane_89.png" />
+    <Content Include="Images\rosekane_9.png" />
+    <Content Include="Images\rosekane_90.png" />
+    <Content Include="Images\rosekane_91.png" />
+    <Content Include="Images\rosekane_92.png" />
+    <Content Include="Images\rosekane_93.png" />
+    <Content Include="Images\rosekane_94.png" />
+    <Content Include="Images\rosekane_95.png" />
+    <Content Include="Images\rosekane_96.png" />
+    <Content Include="Images\rosekane_97.png" />
+    <Content Include="Images\rosekane_98.png" />
+    <Content Include="Images\rosekane_99.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
