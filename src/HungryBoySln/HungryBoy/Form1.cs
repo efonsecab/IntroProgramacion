@@ -44,9 +44,9 @@ namespace HungryBoy
             int posX = 0;
             int posY = 0;
             int posAtString = 0;
-            string cleanLevelMap = 
+            string cleanLevelMap =
                 Properties.Resources.Level1.
-                Replace("\r\n",string.Empty);
+                Replace("\r\n", string.Empty);
             for (int f = 0; f < TOTAL_ROWS; f++)
             {
                 for (int c = 0; c < TOTAL_COLUMNS; c++)
@@ -144,7 +144,7 @@ namespace HungryBoy
                     break;
                 case ArrowDirection.Up:
                     currentPlayerLocation =
-                        new Point(currentPlayerLocation.X, 
+                        new Point(currentPlayerLocation.X,
                         currentPlayerLocation.Y - unitsToMove);
                     break;
                 case ArrowDirection.Down:
@@ -164,23 +164,39 @@ namespace HungryBoy
                         {
                             case ArrowDirection.Left:
                                 if ((c - 1) != 0 &&
-                                    maze[f,c-1].Char != 'W')
+                                    maze[f, c - 1].Char != 'W')
+                                {
+                                    maze[f, c - 1].Char = 'P';
+                                    maze[f, c].Char = ' ';
                                     allowMovement = true;
+                                }
                                 break;
                             case ArrowDirection.Right:
                                 if ((c + 1) != TOTAL_COLUMNS
-                                    && maze[f,c+1].Char != 'W')
+                                    && maze[f, c + 1].Char != 'W')
+                                {
+                                    maze[f, c + 1].Char = 'P';
+                                    maze[f, c].Char = ' ';
                                     allowMovement = true;
+                                }
                                 break;
                             case ArrowDirection.Up:
                                 if ((f - 1) > 0 &&
-                                    maze[f-1,c].Char != 'W')
+                                    maze[f - 1, c].Char != 'W')
+                                {
+                                    maze[f-1, c].Char = 'P';
+                                    maze[f, c].Char = ' ';
                                     allowMovement = true;
+                                }
                                 break;
                             case ArrowDirection.Down:
                                 if ((f + 1) != TOTAL_ROWS &&
-                                    maze[f+1,c].Char != 'W')
+                                    maze[f + 1, c].Char != 'W')
+                                {
+                                    maze[f+1, c].Char = 'P';
+                                    maze[f, c].Char = ' ';
                                     allowMovement = true;
+                                }
                                 break;
                         }
                     }
