@@ -14,8 +14,8 @@ namespace HungryBoy
     {
         private const int TOTAL_ROWS = 20;
         private const int TOTAL_COLUMNS = 28;
-        private PictureBox[,] maze =
-            new PictureBox[TOTAL_ROWS, TOTAL_COLUMNS];
+        private Entidades.Casilla[,] maze =
+            new Entidades.Casilla[TOTAL_ROWS, TOTAL_COLUMNS];
         private const int H = 15;
         private const int W = 15;
         PictureBox player = null;
@@ -32,7 +32,7 @@ namespace HungryBoy
             player.Image = Properties.Resources.HungryBoy;
             player.Size =
                 new Size(W, H);
-            Point imageLocation = maze[f, c].Location;
+            Point imageLocation = maze[f, c].Imagen.Location;
             player.Location = imageLocation;
             player.SizeMode = PictureBoxSizeMode.StretchImage;
             this.Controls.Add(player);
@@ -63,7 +63,7 @@ namespace HungryBoy
                         new Point(posX, posY);
                     posX += W;
                     this.Controls.Add(p);
-                    maze[f, c] = p;
+                    maze[f, c] = new Entidades.Casilla(charAtPos, p);
                     switch (charAtPos)
                     {
                         case 'P':
@@ -157,25 +157,29 @@ namespace HungryBoy
             {
                 for (int c = 0; c < TOTAL_COLUMNS; c++)
                 {
-                    PictureBox picBoxinPos = maze[f, c];
+                    PictureBox picBoxinPos = maze[f, c].Imagen;
                     if (player.Location == picBoxinPos.Location)
                     {
                         switch (MovementDirection)
                         {
                             case ArrowDirection.Left:
-                                if ((c - 1) != 0)
+                                if ((c - 1) != 0 &&
+                                    maze[f,c-1].Char != 'W')
                                     allowMovement = true;
                                 break;
                             case ArrowDirection.Right:
-                                if ((c + 1) != TOTAL_COLUMNS)
+                                if ((c + 1) != TOTAL_COLUMNS
+                                    && maze[f,c+1].Char != 'W')
                                     allowMovement = true;
                                 break;
                             case ArrowDirection.Up:
-                                if ((f - 1) > 0)
+                                if ((f - 1) > 0 &&
+                                    maze[f-1,c].Char != 'W')
                                     allowMovement = true;
                                 break;
                             case ArrowDirection.Down:
-                                if ((f + 1) != TOTAL_ROWS)
+                                if ((f + 1) != TOTAL_ROWS &&
+                                    maze[f+1,c].Char != 'W')
                                     allowMovement = true;
                                 break;
                         }
