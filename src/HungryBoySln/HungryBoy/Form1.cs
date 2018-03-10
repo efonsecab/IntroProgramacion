@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HungryBoy.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,25 +19,39 @@ namespace HungryBoy
             new Entidades.Casilla[TOTAL_ROWS, TOTAL_COLUMNS];
         private const int H = 15;
         private const int W = 15;
-        PictureBox player = null;
+        Player player = null;
         private ArrowDirection MovementDirection = ArrowDirection.Left;
+        public int puntaje = 0;
+        public Ghost RedGhost;
         public Form1()
         {
             InitializeComponent();
             CreateMaze();
+            SetUIElements();
+            tmrGhostMovement.Start();
+        }
+
+        private void SetUIElements()
+        {
+            this.lblScoreValue.Text =
+                puntaje.ToString();
         }
 
         private void CreatePlayer(int f, int c)
         {
-            player = new PictureBox();
-            player.Image = Properties.Resources.HungryBoy;
-            player.Size =
-                new Size(W, H);
-            Point imageLocation = maze[f, c].Imagen.Location;
-            player.Location = imageLocation;
-            player.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.Controls.Add(player);
-            player.BringToFront();
+            player = new Player();
+            player.Imagen = new PictureBox();
+            player.Imagen.Image =
+                Properties.Resources.HungryBoy;
+            player.Imagen.Size = new Size(W, H);
+            Point imageLocation =
+                maze[f, c].Imagen.Location;
+            player.FilaActual = f;
+            player.ColumnaActual = c;
+            player.Imagen.Location = imageLocation;
+            player.Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.Controls.Add(player.Imagen);
+            player.Imagen.BringToFront();
         }
 
         private void CreateMaze()
@@ -75,7 +90,11 @@ namespace HungryBoy
                         case 'O':
                             p.Image = Properties.Resources.rosekane_13;
                             break;
-                        case 'I': break;
+                        case 'R':
+                            p.Image = Properties.Resources.rosekane_44;
+                            maze[f, c].HasRedGhost = true;
+                            RedGhost = new Ghost(f, c, p);
+                            break;
                         case 'B': break;
                         case 'Z': break;
                         case 'W':
@@ -130,7 +149,8 @@ namespace HungryBoy
 
         private void tmrPlayerMovement_Tick(object sender, EventArgs e)
         {
-            Point currentPlayerLocation = player.Location;
+            Point currentPlayerLocation =
+                player.Imagen.Location;
             int unitsToMove = W;
             switch (MovementDirection)
             {
@@ -158,7 +178,8 @@ namespace HungryBoy
                 for (int c = 0; c < TOTAL_COLUMNS; c++)
                 {
                     PictureBox picBoxinPos = maze[f, c].Imagen;
-                    if (player.Location == picBoxinPos.Location)
+                    if (player.Imagen.Location ==
+                        picBoxinPos.Location)
                     {
                         switch (MovementDirection)
                         {
@@ -166,7 +187,10 @@ namespace HungryBoy
                                 if ((c - 1) != 0 &&
                                     maze[f, c - 1].Char != 'W')
                                 {
+                                    EvaluatePellet(f, c - 1);
                                     maze[f, c - 1].Char = 'P';
+                                    player.FilaActual = f;
+                                    player.ColumnaActual = c - 1;
                                     maze[f, c].Char = ' ';
                                     allowMovement = true;
                                 }
@@ -175,7 +199,10 @@ namespace HungryBoy
                                 if ((c + 1) != TOTAL_COLUMNS
                                     && maze[f, c + 1].Char != 'W')
                                 {
+                                    EvaluatePellet(f, c + 1);
                                     maze[f, c + 1].Char = 'P';
+                                    player.FilaActual = f;
+                                    player.ColumnaActual = c + 1;
                                     maze[f, c].Char = ' ';
                                     allowMovement = true;
                                 }
@@ -184,7 +211,10 @@ namespace HungryBoy
                                 if ((f - 1) > 0 &&
                                     maze[f - 1, c].Char != 'W')
                                 {
-                                    maze[f-1, c].Char = 'P';
+                                    EvaluatePellet(f - 1, c);
+                                    maze[f - 1, c].Char = 'P';
+                                    player.FilaActual = f - 1;
+                                    player.ColumnaActual = c;
                                     maze[f, c].Char = ' ';
                                     allowMovement = true;
                                 }
@@ -193,7 +223,10 @@ namespace HungryBoy
                                 if ((f + 1) != TOTAL_ROWS &&
                                     maze[f + 1, c].Char != 'W')
                                 {
-                                    maze[f+1, c].Char = 'P';
+                                    EvaluatePellet(f + 1, c);
+                                    maze[f + 1, c].Char = 'P';
+                                    player.FilaActual = f + 1;
+                                    player.ColumnaActual = c;
                                     maze[f, c].Char = ' ';
                                     allowMovement = true;
                                 }
@@ -203,7 +236,72 @@ namespace HungryBoy
                 }
             }
             if (allowMovement)
-                player.Location = currentPlayerLocation;
+                player.Imagen.Location = currentPlayerLocation;
+        }
+
+        private void EvaluatePellet(int f, int c)
+        {
+            switch (maze[f, c].Char)
+            {
+                case 'o':
+                    puntaje = puntaje + 250;
+                    maze[f, c].Imagen.Visible = false;
+                    break;
+                case 'O':
+                    puntaje = puntaje + 500;
+                    maze[f, c].Imagen.Visible = false;
+                    break;
+            }
+            SetUIElements();
+        }
+
+        private void tmrGhostMovement_Tick(object sender, EventArgs e)
+        {
+            List<ArrowDirection> lstAvailableMovements
+                = new List<ArrowDirection>();
+            if (maze[RedGhost.FilaActual - 1,
+                RedGhost.ColumnActual].Char != 'W')
+            {
+                lstAvailableMovements.Add(ArrowDirection.Up);
+            }
+            if (maze[RedGhost.FilaActual + 1,
+                RedGhost.ColumnActual].Char != 'W')
+            {
+                lstAvailableMovements.Add(ArrowDirection.Down);
+            }
+            if (maze[RedGhost.FilaActual,
+                RedGhost.ColumnActual - 1].Char != 'W')
+            {
+                lstAvailableMovements.Add(ArrowDirection.Left);
+            }
+            if (maze[RedGhost.FilaActual,
+    RedGhost.ColumnActual + 1].Char != 'W')
+            {
+                lstAvailableMovements.Add(ArrowDirection.Right);
+            }
+            switch (RedGhost.MovementDiretion)
+            {
+                case ArrowDirection.Up:
+                    if (maze[RedGhost.FilaActual-1, RedGhost.ColumnActual].Imagen.Location.Y !=
+                        RedGhost.Imagen.Location.Y)
+                    {
+                        RedGhost.Imagen.Location
+                            = new Point(RedGhost.Imagen.Location.X, RedGhost.Imagen.Location.Y - W);
+                        RedGhost.Imagen.BringToFront();
+                    }
+                    if (maze[RedGhost.FilaActual - 1, RedGhost.ColumnActual].Imagen.Location.Y ==
+    RedGhost.Imagen.Location.Y)
+                    {
+                        RedGhost.FilaActual -= 1;
+                    }
+                    break;
+                case ArrowDirection.Down:
+                    break;
+                case ArrowDirection.Left:
+                    break;
+                case ArrowDirection.Right:
+                    break;
+            }
         }
     }
 }

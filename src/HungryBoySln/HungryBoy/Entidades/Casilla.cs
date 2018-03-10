@@ -9,6 +9,7 @@ namespace HungryBoy.Entidades
     public class Casilla
     {
         public char Char;
+        public bool HasRedGhost = false;
         public System.Windows.Forms.PictureBox Imagen;
 
         public Casilla(char pChar, 

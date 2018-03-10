@@ -72,23 +72,23 @@ namespace HungryBoy.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to WWWWWWWWWWWWWWWWWWWWWWWWWWWW
-        ///WO     WWWWWWWWWWWWWWWWWWWWW
-        ///W WWWW WWWWWWWWWWWWWWWWWWWWW
-        ///W W    WWWWWWWWWWWWWWWWWWWWW
-        ///W W    WWWWWWWWWWWWWWWWWWWWW
-        ///W W    WWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W W WWWWWWWWWWWWWWWWWWWWWWWW
-        ///W  [rest of string was truncated]&quot;;.
+        ///WOoooooooooooooooooooooooPOW
+        ///WoWWWWoWoWWWWWWWWWWWWWoWWWoW
+        ///WoWooooWoWWWWWWWWWWWWWoWWWoW
+        ///WoWooooWoWWWWWWWWWWWWWoooooW
+        ///WoWooooWoWWWWWWWWWWWWWWWWWoW
+        ///WoWoWWWWWWWWWWWWWWWWWWWWWWoW
+        ///WoWoWWWWWWWWWWWWWWWWWWWWWWoW
+        ///WoWoWWWWWWWWWWWWWWWWWWWWWWoW
+        ///WoWoWWWWWWWWWWWWWWWWWWWWWWoW
+        ///WoWoWWWWWWWWWWWWWWWWWWWWWWoW
+        ///WoWoWWWWWWWWWWWWWWWWWWWWWWoW
+        ///WoWoWWWWWWWWWWWWWWWWWWWWWWoW
+        ///WoWoWWWWoooooooRoooooooooooW
+        ///WoWoWWWWoWWoWoWWoWWWWWWWWWoW
+        ///WoWoWWWWoWWoWoWWoWWWWWWWWWoW
+        ///WoWoooooooooooWWoWWWWWWWWWoW
+        ///Wo [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Level1 {
             get {
@@ -132,6 +132,16 @@ namespace HungryBoy.Properties {
         internal static System.Drawing.Bitmap rosekane_13 {
             get {
                 object obj = ResourceManager.GetObject("rosekane_13", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rosekane_44 {
+            get {
+                object obj = ResourceManager.GetObject("rosekane_44", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
